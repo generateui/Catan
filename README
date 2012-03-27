@@ -1,0 +1,11 @@
+Settlers of Catan (the board game!). It will be programmed in Python and utilize the GUI. Because of parts of the games complexity, we'll change the ammount of points needed to win to 7. We'll also get rid of Longest Road and change the shape of board pieces (for now). They will be changed from hexagon's to squares for simplicity.
+
+-Ideas/goals:
+	Goal: To create the multiplayer board game: Settlers of Catan
+	Ideas:
+		-multiplayer support
+		-server/client system
+		-save system
+		-if finished early, impliment other multiplayer-oriented games 
+			(yahtzee, life, etc).
+
