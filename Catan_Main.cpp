@@ -3,6 +3,11 @@
 int main(int argc, char *argv[]){
     
     Player player1;
+    player1.checkStats();
+    player1.seeResources();
+    player1.seeDevelopments();
+    player1.buyItem();
+    player1.checkStats();
     
 
     /*
