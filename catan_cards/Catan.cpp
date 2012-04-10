@@ -133,6 +133,25 @@ void Player::buyCity(){
 
 }
 
+void Player::gainResources(int roll){
+    list<settlement>::iterator current = pieces.begin();
+
+    int size = pieces.size();
+    //need to know how the city will be attached to a the color;
+    for(int i = 0; i<size; i++){
+        if(current->top == roll){
+            this->somecolor ++city;
+        }
+        if(current->left == roll){
+            this->somecolor ++city;
+        }
+        if(current->right == roll){
+            this->somecolor ++city;
+        }
+
+    }
+}
+
 void Player::buyDevelopmentCard(){
     if(this->blue>0 && this->yellow>0 && this->lightGreen>0){
         //do action to fetch developmentCard
@@ -141,4 +160,68 @@ void Player::buyDevelopmentCard(){
         this->lightGreen--;
     } else
         cout<<"You do not have the resources to purchase a developmentCard!"<<endl<<endl;
+}
+
+void Player::switchOutCards(){
+    this->seeResources();
+    
+    cout<<"1) Trade for yellow"<<endl;
+    cout<<"2) Trade for light green"<<endl;
+    cout<<"3) Trade for dark green"<<endl;
+    cout<<"4) Trade for blue"<<endl;
+    cout<<"5) Trade for red"<<endl<endl;
+    int input;
+    cin>>input;
+
+    if(input==1){
+        
+        this->yellow++;
+    }else if (input==2){
+
+        this->lightGreen++;
+    }else if(input==3){
+
+        this->darkGreen++;
+    }else if(input==4){
+
+        this->blue++;
+    }else if(input==5){
+
+        this->red++;
+    }else
+        cout<<"Cancelled"<<endl;
+    
+
+}
+
+void Player::whichCardsToTrade(){
+    
+    cout<<"1) Give up yellow"<<endl;
+    cout<<"2) Give up light green"<<endl;
+    cout<<"3) Give up dark green"<<endl;
+    cout<<"4) Give up blue"<<endl;
+    cout<<"5) Give up red"<<endl;
+    int input;
+    cin>>input;
+
+    int tradeDefault = 4;
+    if(input==1){
+        //check for better trade through ports
+        Player.yellow-=tradeDefault;
+        
+    }else if (input==2){
+        //check for better trade through ports
+        Player.lightGreen-=tradeDefault;
+    }else if(input==3){
+        //check for better trade through ports
+        Player.darkGreen-=tradeDefault;
+    }else if(input==4){
+        //check for better trade through ports
+        Player.blue-=tradeDefault;
+    }else if(input==5){
+        //check for better trade through ports
+        Player.red-=tradeDefault;
+    }else
+        cout<<"Cancelled"<<endl;
+
 }
