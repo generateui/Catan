@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'catan_map.ui'
 **
-** Created: Sun Apr 8 16:42:46 2012
+** Created: Sun Apr 8 18:48:03 2012
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -17,6 +17,7 @@
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QMainWindow>
+#include <QtGui/QMenu>
 #include <QtGui/QMenuBar>
 #include <QtGui/QPushButton>
 #include <QtGui/QStatusBar>
@@ -28,6 +29,7 @@ QT_BEGIN_NAMESPACE
 class Ui_catan_map
 {
 public:
+    QAction *actionWorks;
     QWidget *centralWidget;
     QLabel *image_label;
     QPushButton *pushButton_01;
@@ -157,6 +159,7 @@ public:
     QPushButton *pushRoad_71;
     QPushButton *pushRoad_72;
     QMenuBar *menuBar;
+    QMenu *menuSample;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -165,6 +168,8 @@ public:
         if (catan_map->objectName().isEmpty())
             catan_map->setObjectName(QString::fromUtf8("catan_map"));
         catan_map->resize(1000, 703);
+        actionWorks = new QAction(catan_map);
+        actionWorks->setObjectName(QString::fromUtf8("actionWorks"));
         centralWidget = new QWidget(catan_map);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         image_label = new QLabel(centralWidget);
@@ -552,13 +557,19 @@ public:
         menuBar = new QMenuBar(catan_map);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 1000, 25));
+        menuSample = new QMenu(menuBar);
+        menuSample->setObjectName(QString::fromUtf8("menuSample"));
         catan_map->setMenuBar(menuBar);
         mainToolBar = new QToolBar(catan_map);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
         catan_map->addToolBar(Qt::TopToolBarArea, mainToolBar);
+        catan_map->insertToolBarBreak(mainToolBar);
         statusBar = new QStatusBar(catan_map);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
         catan_map->setStatusBar(statusBar);
+
+        menuBar->addAction(menuSample->menuAction());
+        menuSample->addAction(actionWorks);
 
         retranslateUi(catan_map);
 
@@ -568,6 +579,7 @@ public:
     void retranslateUi(QMainWindow *catan_map)
     {
         catan_map->setWindowTitle(QApplication::translate("catan_map", "catan_map", 0, QApplication::UnicodeUTF8));
+        actionWorks->setText(QApplication::translate("catan_map", "Works!!", 0, QApplication::UnicodeUTF8));
         image_label->setText(QString());
         pushButton_01->setText(QApplication::translate("catan_map", "1", 0, QApplication::UnicodeUTF8));
         pushButton_02->setText(QApplication::translate("catan_map", "1", 0, QApplication::UnicodeUTF8));
@@ -695,6 +707,7 @@ public:
         pushRoad_70->setText(QString());
         pushRoad_71->setText(QString());
         pushRoad_72->setText(QString());
+        menuSample->setTitle(QApplication::translate("catan_map", "Sample", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
