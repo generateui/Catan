@@ -26,15 +26,15 @@ class Player{
     int monopoly;
     int yearOfPlenty;
 
-    struct Settlement{
+    struct settlement{
         int city; //1 if settlement, 2 if city.
         int top;
         int left;
         int right;
-        char port;
+        string port;
     };
 
-    list<Settlement> pieces;
+    list<settlement> pieces;
 
     void checkLongestRoad();
     void checkLargestArmy();
@@ -48,19 +48,21 @@ class Player{
     void buySettlement();
     void buyCity();
     void buyDevelopmentCard();
+
     //Trading cards
-    void whichCardsToTrade(); //trade withself 
+    void whichCardsToTrade(); //trade withself
+    void tradeResources(Player &); //trade with another player
 
     public:
-    void tradeResources(Player &, Player &);
-    void buyResources(Player &);
     int roll();
+
     void checkStats();
     void seeResources();
     void seeDevelopments();
     void buyItem();
+    void changeName(String&);
 
-    void switchOutCards();
+    void switchOutCards(); //try to switch out cards
 
     //constructor
     Player();
