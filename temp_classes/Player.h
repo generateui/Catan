@@ -12,33 +12,29 @@ class Player{
     int roadLength_;
     int armySize_;
 
-    //after further thought resources and developmentCards don't need to be
-    //structs. if you think its neccessary make the neccessary changes.
-    //struct resources{
-        int yellow;
-        int lightGreen;
-        int darkGreen;
-        int blue;
-        int red;
-    //};
+    //resources
+    int yellow;
+    int lightGreen;
+    int darkGreen;
+    int blue;
+    int red;
 
-    //struct developmentCards{
-        int knight;
-        int victoryPointCard;
-        int roadBuilder;
-        int monopoly;
-        int yearOfPlenty;
-    //};
+    //developmentCards
+    int knight;
+    int victoryPointCard;
+    int roadBuilder;
+    int monopoly;
+    int yearOfPlenty;
 
-    struct Settlement{
-        bool isCity; //if true we'll multiply by 2
+    struct settlement{
+        int city; //1 if settlement, 2 if city.
         int top;
         int left;
         int right;
         char port;
     };
 
-    list<Settlement> pieces;
+    list<settlement> pieces;
 
     void checkLongestRoad();
     void checkLargestArmy();
@@ -52,6 +48,8 @@ class Player{
     void buySettlement();
     void buyCity();
     void buyDevelopmentCard();
+    //Trading cards
+    void whichCardsToTrade(); //trade withself 
 
     public:
     void tradeResources(Player &, Player &);
@@ -62,6 +60,9 @@ class Player{
     void seeDevelopments();
     void buyItem();
 
+    void switchOutCards();//replace cards with the bank
+    
+    void gainResources(int);  //get resources (should be called after a roll, or even in roll function)
 
     //constructor
     Player();
