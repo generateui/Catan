@@ -13,6 +13,7 @@ Player::Player(){
     this->victoryPoints_= 0;
     this->roadLength_   = 0;
     this->armySize_     = 0;
+    this->playerColor_ = "G";
     this->yellow        = 0;
     this->lightGreen    = 0;
     this->darkGreen     = 0;
@@ -196,6 +197,10 @@ void Player::buyDevelopmentCard(){
 
 void Player::changeName(string & name){
     this->name_ = name;
+}
+
+void Player::changeColor(char &color){
+    this->playerColor_ = color;
 }
 
 /*This public function searches through all the settlements/cities

@@ -11,6 +11,7 @@ class Player{
     int victoryPoints_;
     int roadLength_;
     int armySize_;
+    char playerColor_;
 
     //resources
     int yellow;
@@ -61,7 +62,7 @@ class Player{
     void seeDevelopments();
     void buyItem();
     void changeName(String&);
-
+    void changeColor(char&);
     void switchOutCards(); //try to switch out cards
 
     //constructor
