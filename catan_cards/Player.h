@@ -11,6 +11,7 @@ class Player{
     int victoryPoints_;
     int roadLength_;
     int armySize_;
+    char playerColor_;
 
     //resources
     int yellow;
@@ -31,7 +32,7 @@ class Player{
         int top;
         int left;
         int right;
-        char port;
+        string port;
     };
 
     list<settlement> pieces;
@@ -48,21 +49,21 @@ class Player{
     void buySettlement();
     void buyCity();
     void buyDevelopmentCard();
+
     //Trading cards
-    void whichCardsToTrade(); //trade withself 
+    void whichCardsToTrade(); //trade withself
+    void tradeResources(Player &); //trade with another player
 
     public:
-    void tradeResources(Player &, Player &);
-    void buyResources(Player &);
     int roll();
+
     void checkStats();
     void seeResources();
     void seeDevelopments();
     void buyItem();
-
-    void switchOutCards();//replace cards with the bank
-    
-    void gainResources(int);  //get resources (should be called after a roll, or even in roll function)
+    void changeName(String&);
+    void changeColor(char&);
+    void switchOutCards(); //try to switch out cards
 
     //constructor
     Player();
