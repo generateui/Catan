@@ -14,25 +14,29 @@ class Player{
     char playerColor_;
 
     //resources
-    int yellow;
-    int lightGreen;
-    int darkGreen;
-    int blue;
-    int red;
+    int yellow_;     //y
+    int lightGreen_; //l
+    int darkGreen_;  //d
+    int blue_;       //b
+    int red_;        //r
 
     //developmentCards
-    int knight;
-    int victoryPointCard;
-    int roadBuilder;
-    int monopoly;
-    int yearOfPlenty;
-
+    int knight_;
+    int victoryPointCard_;
+    int roadBuilder_;
+    int monopoly_;
+    int yearOfPlenty_;
+    struct component{
+        int number;
+        char color; //y, l, d, b, or r 
+    }
+ 
     struct settlement{
         int city; //1 if settlement, 2 if city.
-        int top;
-        int left;
-        int right;
-        string port;
+        component top;
+        component left;
+        component right;
+        char port; //port will be the same as color y, l, d, b, r, or of course '3' for the 3:1 port
     };
 
     list<settlement> pieces;
@@ -51,8 +55,12 @@ class Player{
     void buyDevelopmentCard();
 
     //Trading cards
-    void whichCardsToTrade(); //trade withself
-    void tradeResources(Player &); //trade with another player
+    void whichCardsToTrade();       //trade withself
+    void tradeResources(Player &);  //trade with another player
+    int findBestTrade(char&);
+
+    //gaining resources
+    void addProperColor(char&, int&);
 
     public:
     int roll();
@@ -63,7 +71,7 @@ class Player{
     void buyItem();
     void changeName(String&);
     void changeColor(char&);
-    void switchOutCards(); //try to switch out cards
+    void convertResources(); //try to switch out cards
 
     //constructor
     Player();

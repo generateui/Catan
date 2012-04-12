@@ -13,18 +13,18 @@ Player::Player(){
     this->victoryPoints_= 0;
     this->roadLength_   = 0;
     this->armySize_     = 0;
-    this->playerColor_ = "G";
-    this->yellow        = 0;
-    this->lightGreen    = 0;
-    this->darkGreen     = 0;
-    this->blue          = 0;
-    this->red           = 0;
+    this->playerColor_  = "G";
+    this->yellow_       = 0;
+    this->lightGreen_   = 0;
+    this->darkGreen_    = 0;
+    this->blue_         = 0;
+    this->red_          = 0;
 
-    this->knight        = 0;
-    this->victoryPointCard = 0;
-    this->roadBuilder   = 0;
-    this->monopoly      = 0;
-    this->yearOfPlenty  = 0;
+    this->knight_       = 0;
+    this->victoryPointCard_ = 0;
+    this->roadBuilder_  = 0;
+    this->monopoly_     = 0;
+    this->yearOfPlenty_ = 0;
 }
 
 Player::~Player(){
@@ -48,43 +48,43 @@ void Player::checkStats(){
 
 //this private function calculates the total number of resources a player has
 int Player::numberOfResources(){
-    int total = this->yellow;
-    total = total + this->lightGreen;
-    total = total + this->darkGreen;
-    total = total + this->blue;
-    total = total + this->red;
+    int total = this->yellow_;
+    total = total + this->lightGreen_;
+    total = total + this->darkGreen_;
+    total = total + this->blue_;
+    total = total + this->red_;
     return total;
 }
 
 //this private function calculates the
 //totalnumber of development cards a player has
 int Player::numberOfDevelopments(){
-    int total = this->knight;
-    total +=this->victoryPointCard;
-    total +=this->roadBuilder;
-    total +=this->monopoly;
-    total +=this->yearOfPlenty;
+    int total = this->knight_;
+    total +=this->victoryPointCard_;
+    total +=this->roadBuilder_;
+    total +=this->monopoly_;
+    total +=this->yearOfPlenty_;
     return total;
 }
 
 //This public functionallows a player to see
 //which resources he or she has
 void Player::seeResources(){
-    cout<<"Yellow: "<<this->yellow<<endl;
-    cout<<"Light Green: "<<this->lightGreen<<endl;
-    cout<<"Dark Green: "<<this->darkGreen<<endl;
-    cout<<"Blue: "<<this->blue<<endl;
-    cout<<"Red: "<<this->red<<endl<<endl;
+    cout<<"Yellow: "<<this->yellow_<<endl;
+    cout<<"Light Green: "<<this->lightGreen_<<endl;
+    cout<<"Dark Green: "<<this->darkGreen_<<endl;
+    cout<<"Blue: "<<this->blue_<<endl;
+    cout<<"Red: "<<this->red_<<endl<<endl;
 }
 
 //This public functionallows a player to see
 //which development cards he or she has
 void Player::seeDevelopments(){
-    cout<<"Knights: "<<this->knight<<endl;
-    cout<<"Victory Point Card(s): "<<this->victoryPointCard<<endl;
-    cout<<"Road Builder: "<<this->roadBuilder<<endl;
-    cout<<"Monoply: "<<this->monopoly<<endl;
-    cout<<"Year Of Plenth: "<<this->yearOfPlenty<<endl<<endl;
+    cout<<"Knights: "<<this->knight_<<endl;
+    cout<<"Victory Point Card(s): "<<this->victoryPointCard_<<endl;
+    cout<<"Road Builder: "<<this->roadBuilder_<<endl;
+    cout<<"Monoply: "<<this->monopoly_<<endl;
+    cout<<"Year Of Plenth: "<<this->yearOfPlenty_<<endl<<endl;
 }
 
 /*This public function brings up the buy menu. It calls the
@@ -118,8 +118,8 @@ void Player::buyItem(){
 void Player::buyRoad(){
     if(this->red>0 && this->darkGreen>0){
         //do action to place road
-        this->red--;
-        this->darkGreen--;
+        this->red_--;
+        this->darkGreen_--;
     } else
         cout<<"You do not have the resources to purchase a road!"<<endl<<endl;
 
@@ -129,10 +129,10 @@ void Player::buyRoad(){
 void Player::buySettlement(){
     if(this->red >0 && this->darkGreen>0 && this->lightGreen>0 && this->yellow>0){
         //do action to place settlement
-        this->red--;
-        this->darkGreen--;
-        this->yellow--;
-        this->lightGreen--;
+        this->red_--;
+        this->darkGreen_--;
+        this->yellow_--;
+        this->lightGreen_--;
         this->victoryPoints_++;
 
         struct settlement set;
@@ -167,8 +167,8 @@ void Player::buyCity(){
             current++;
         }
         if(numOfCities!=size){ //it's possible to build a city (aka not every building is a city)
-            this->blue -= 3;
-            this->yellow -= 2;
+            this->blue_ -= 3;
+            this->yellow_ -= 2;
             this->victoryPoints_++;
             //then we have to do some sort of cycle to change the proper settlement into a city.
         }
@@ -188,9 +188,9 @@ to figure out which card you get
 void Player::buyDevelopmentCard(){
     if(this->blue>0 && this->yellow>0 && this->lightGreen>0){
         //do action to fetch developmentCard
-        this->blue--;
-        this->yellow--;
-        this->lightGreen--;
+        this->blue_--;
+        this->yellow_--;
+        this->lightGreen_--;
     } else
         cout<<"You do not have the resources to purchase a developmentCard!"<<endl<<endl;
 }
@@ -211,32 +211,47 @@ void Player::gainResources(int roll){
 
     int size = pieces.size();
     //need to know how the city will be attached to a the color;
-
-    /*
+    
     for(int i = 0; i<size; i++){
-        if(current->top == roll){
-            this->somecolor +=city;
+        if(current->top.number == roll){
+            this->addProperColor(current->top.color, current->city);
         }
-        if(current->left == roll){
-            this->somecolor +=city;
+        if(current->left.number == roll){
+            this->addProperColor(current->left.color, current->city);
         }
-        if(current->right == roll){
-            this->somecolor +=city;
+        if(current->right.number == roll){
+            this->addProperColor(current->right.color, current->city);
         }
         
         current++;
     }
-    */
-
+   
 }
 
+/*This is a private function called by gainResources. It finds which 
+of the players resources to add to given that he his settlement/city
+has a part matching a number*/
+void Player::addProperColor(char& color, int& city){
+    if(color=='y'){
+        this->yellow_ += city;
+    }else if(color=='l'){
+        this->lightGreen +=city;
+    }else if(color=='d'){
+        this->darkGreen +=city;
+    }else if(color=='b'){
+        this->blue += city;
+    }else { //color = red
+        this->red += city;
+    }
+
+}
 
 
 /*this is a public function where you decide what you want to trade for.
 The private function whichCardsToTrade decides which cards you will give up to attain the
 card you decide on here */
 
-void Player::switchOutCards(){
+void Player::convertResources(){
     this->seeResources();
     
     cout<<"1) Trade for yellow"<<endl;
@@ -264,7 +279,6 @@ void Player::switchOutCards(){
     }else
         cout<<"Cancelled"<<endl;
     
-
 }
 
 
@@ -274,37 +288,55 @@ is 4, it has to check ports to see if you can get a better deal though. */
 
 void Player::whichCardsToTrade(){
     //maybe show the conversion too rather than just assuming the person knows
-    cout<<"1) Give up yellow"<<endl;
-    cout<<"2) Give up light green"<<endl;
-    cout<<"3) Give up dark green"<<endl;
-    cout<<"4) Give up blue"<<endl;
-    cout<<"5) Give up red"<<endl;
+    int yellow = findBestTrade('y');
+    int lightGreen = findBestTrade('l');
+    int darkGreen = findBestTrade('d');
+    int blue = findBestTrade('b');
+    int red = findBestTrade('r');
+
+    cout<<"1) Give up yellow        "<<yellow<<":1"<<endl;
+    cout<<"2) Give up light green   "<<lightGreen<<":1"<<endl;
+    cout<<"3) Give up dark green    "<<darkGreen<<":1"<<endl;
+    cout<<"4) Give up blue          "<<blue<<":1"<<endl;
+    cout<<"5) Give up red           "<<red<<":1"<<endl;
     cout<<"0) Cancel"<<endl;
     int input;
     cin>>input;
 
-    int tradeDefault = 4;
     if(input==1 || input==2 || input==3 || input==4 || input==5){
 
         if(input==1){
-            //check for better trade through ports also see if you even have enough!
-            Player.yellow-=tradeDefault;
-            
+            Player.yellow-=yellow;
         }else if (input==2){
-            //check for better trade through ports also see if you even have enough!
-            Player.lightGreen-=tradeDefault;
+            Player.lightGreen-=lightGreen;
         }else if(input==3){
-            //check for better trade through ports also see if you even have enough!
-            Player.darkGreen-=tradeDefault;
+            Player.darkGreen-=darkGreen;
         }else if(input==4){
-            //check for better trade through ports also see if you even have enough!
-            Player.blue-=tradeDefault;
+            Player.blue-=blue;
         }else{
-            //check for better trade through ports also see if you even have enough!
-            Player.red-=tradeDefault;
+            Player.red-=red;
         }
         this->showResources();
 
     }else
         cout<<"Cancelled"<<endl;
+}
+
+int findBestTrade(char & color){
+    list<settlement>::iterator current = pieces.begin();
+
+    int tradeDefault = 4;
+
+    int size = pieces.size();
+    for(int i = 0; i<size; ++i){
+        if(current->port == color)
+            return 2;
+        else if(current->port == '3')
+            tradeDefault=3;
+
+        current++;
+    }
+
+    return tradeDefault;
+
 }
