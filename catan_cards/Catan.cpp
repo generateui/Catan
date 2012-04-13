@@ -116,7 +116,7 @@ void Player::buyItem(){
 
 //this private function allows a player to purchase a road
 void Player::buyRoad(){
-    if(this->red>0 && this->darkGreen>0){
+    if(this->red_>0 && this->darkGreen_>0){
         //do action to place road
         this->red_--;
         this->darkGreen_--;
@@ -154,7 +154,7 @@ void Player::buySettlement(){
 /*This private function does the action of changing a settlement into a city and
 charging the respective resources.*/
 void Player::buyCity(){
-    if(this->blue>=3 && this->yellow>=2){
+    if(this->blue_>=3 && this->yellow_>=2){
         //do action to place settlement, but also we have to make sure a settlement is already in that space.
         
         //cycle through list of settlements to make sure there is a settlement to begin with
@@ -186,7 +186,7 @@ It will have to call the private function UNKOWNRIGHTNOW
 to figure out which card you get
 */
 void Player::buyDevelopmentCard(){
-    if(this->blue>0 && this->yellow>0 && this->lightGreen>0){
+    if(this->blue_>0 && this->yellow_>0 && this->lightGreen_>0){
         //do action to fetch developmentCard
         this->blue_--;
         this->yellow_--;
@@ -266,15 +266,15 @@ void Player::convertResources(){
         this->whichCardsToTrade();
 
         if(input==1)
-            this->yellow++;
+            this->yellow_++;
         else if (input==2)
-            this->lightGreen++;
+            this->lightGreen_++;
         else if(input==3)
-            this->darkGreen++;
+            this->darkGreen_++;
         else if(input==4)
-            this->blue++;
+            this->blue_++;
         else if(input==5)
-            this->red++;
+            this->red_++;
 
     }else
         cout<<"Cancelled"<<endl;
@@ -306,15 +306,15 @@ void Player::whichCardsToTrade(){
     if(input==1 || input==2 || input==3 || input==4 || input==5){
 
         if(input==1){
-            Player.yellow-=yellow;
+            this->yellow_ -=yellow;
         }else if (input==2){
-            Player.lightGreen-=lightGreen;
+            this->lightGreen_ -=lightGreen;
         }else if(input==3){
-            Player.darkGreen-=darkGreen;
+            this->darkGreen_-=darkGreen;
         }else if(input==4){
-            Player.blue-=blue;
+            this->blue_ -=blue;
         }else{
-            Player.red-=red;
+            this->red_ -=red;
         }
         this->showResources();
 
