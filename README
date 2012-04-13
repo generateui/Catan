@@ -1,5 +1,14 @@
 Settlers of Catan (the board game!). It will be programmed in Python and utilize the GUI. Because of parts of the games complexity, we'll change the ammount of points needed to win to 7. We'll also get rid of Longest Road and change the shape of board pieces (for now). They will be changed from hexagon's to squares for simplicity.
-
+/////////////################
+////UPDATES:
+// 	-may change longest road card to robber
+		victory point: whenever a "7" is rolled,
+		the player may place the robber anywhere and
+		gain 1 victory point. When another player rolls
+		a seven, they gain control of the robber and the
+		victory point is is transferred from the previous
+		player to the current one.
+//////////////**********************
 -Ideas/goals:
 	Goal: To create the multiplayer board game: Settlers of Catan
 	Ideas:
