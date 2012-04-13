@@ -2,5 +2,5 @@ Code for the layout and the map!
 --Run code from the catan_map_buld-desktop exe file!!
 
 Questions: code for every pushbutton or can we just have a string for each??
-	-solutions:
+	solutions:
 		-all values in qstring?
