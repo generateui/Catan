@@ -1,13 +1,13 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'catan_map.h'
 **
-** Created: Sun Apr 8 12:26:40 2012
+** Created: Sun Apr 15 15:29:59 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../catan_map/catan_map.h"
+#include "catan_map.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'catan_map.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 62
