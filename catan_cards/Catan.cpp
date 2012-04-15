@@ -6,7 +6,6 @@
 
 
 //constructor
-//something is wrong with it.
 Player::Player(){
     this->name_ = "Jeff";
 
@@ -324,6 +323,10 @@ void Player::whichCardsToTrade(){
         cout<<"Cancelled"<<endl;
 }
 
+/*This is a private function called by whichCardsToTrade.
+It takes a given color and determines if you have a port that matches it.
+Otherwise, it searches for a 3:1 port, and if that doesn't exist returns 4
+(the default).*/
 int findBestTrade(char & color){
     list<settlement>::iterator current = pieces.begin();
 
