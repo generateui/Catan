@@ -101,14 +101,14 @@ void Player::buyItem(){
     cin>>number;
     cout<<endl;
     if(input==1 || input==2 || input==3 || input==4){
-    if(number==1)
-        this->buyRoad();
-    else if (number ==2)
-        this->buySettlement();
-    else if (number==3)
-        this->buyCity();
-    else if (number==4)
-        this->buyDevelopmentCard(); 
+        if(number==1)
+            this->buyRoad();
+        else if (number ==2)
+            this->buySettlement();
+        else if (number==3)
+            this->buyCity();
+        else if (number==4)
+            this->buyDevelopmentCard(); 
         this->seeResources();
     }
 
@@ -305,16 +305,18 @@ void Player::whichCardsToTrade(){
 
     if(input==1 || input==2 || input==3 || input==4 || input==5){
 
-        if(input==1){
+        if(input==1 && this->yellow_ >=yellow){
             this->yellow_ -=yellow;
-        }else if (input==2){
+        }else if (input==2 &&this->lightGreen_ >=lightGreen){
             this->lightGreen_ -=lightGreen;
-        }else if(input==3){
+        }else if(input==3 && this->darkGreen_ >=darkGreen){
             this->darkGreen_-=darkGreen;
-        }else if(input==4){
+        }else if(input==4 && this->blue_ >=blue){
             this->blue_ -=blue;
-        }else{
+        }else if(input==5 && this->red_ >= red){
             this->red_ -=red;
+        } else{
+            cout<<"Not enough resources for conversion!"<<endl<<endl;        
         }
         this->showResources();
 
